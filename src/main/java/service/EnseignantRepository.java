@@ -1,50 +1,36 @@
 package service;
 
+
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import com.Formation;
+import com.Enseignant;
     
 @Repository
 @Transactional(readOnly = true)
-public interface FormationRepository extends JpaRepository<Formation, String>{
-	
-	List<Formation> findByNomFormation(String nomFormation);
-	
-	Formation findByCodeFormation(String codeFormation);
-	
-	@Modifying
-    @Transactional
-    @Query("delete from Formation f where f.codeFormation = ?1")
-    void deleteByCodeFormation(String codeFormation);
+public interface EnseignantRepository extends JpaRepository<Enseignant, Long>{
+
+	public List<Enseignant> findByEmailUbo(String emailUbo);
+	public Enseignant findByNom(String nom);
 	
 	@Modifying
     @Transactional
-	@Query("DELETE from Formation")
+    @Query("delete from Enseignant e where e.noEnseignant = ?1")
+    void deleteEnseignantByNo(Long noEnseignant);
+	
+	@Modifying
+    @Transactional
+	@Query("DELETE from Enseignant")
     void deleteAll();
+
+	List<Enseignant> findByemailUbo(String emailUbo);
 	
-
-
 	
-	
-
-	
-
-
-
-
 	
 }
-
-
-
-
-
-
