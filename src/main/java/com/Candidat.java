@@ -13,13 +13,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
+/**
+ * 
+ * 
+ * 
+ * @author Meryem
+ *
+ */
 
+/*  Using NamedQueries to be executed */
 @Entity
 @Table(name = "Candidat")
 @NamedQueries({
 @NamedQuery(name = "Candidat.findByUniversiteOrigine", query = "SELECT c FROM Candidat c WHERE c.universiteOrigine = ?1"),
 @NamedQuery(name = "Candidat.findByNom", query = "SELECT c FROM Candidat c WHERE c.nom = ?1")
-
 })
 public class Candidat {
 
