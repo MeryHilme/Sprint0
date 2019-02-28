@@ -1,13 +1,20 @@
 package controller;
 
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.Candidat;
+
 
 import service.CandidatRepository;
 import service.CandidatService;
@@ -24,7 +31,7 @@ public class CandidatController {
 	
 
 	/* 1- Lister tous les candidats */ 
-	@RequestMapping("/all")
+	@RequestMapping(value="/all",method = { RequestMethod.GET})
 	public List<Candidat> getAll() {
 		return Can.getAll();
 	}
@@ -36,30 +43,47 @@ public class CandidatController {
 		return Can.getCandidat(noCandidat);
 	}
 
-	/*3- Create un nouveau candidat*/	
-	@RequestMapping("/create")
-	public List<Candidat> save() {
-		Candidat c = new Candidat("2","M2DOSI","2017-2018","Karima","Merry","F");
+	/*3- Create un nouveau candidat*/
+	@RequestMapping(value="/create",method= {RequestMethod.POST})
+	public void save(@RequestBody Candidat c) {
 		Can.save(c);
-		return Can.getAll();
 	}
 	
-	/*4- Suppression d'un candidat par Id */ 
-	@RequestMapping("/delete/{noCandidat}")
+	/*4- Suppression d'un candidat par Id 
+	@RequestMapping(value = "/delete/{noCandidat}",method = { RequestMethod.DELETE })
 	@ResponseBody
 	  public void delete(@PathVariable("noCandidat") String noCandidat) {
 	       candidatRepository.deleteById(noCandidat);
+	} */
+	
+	
+	/*4- Suppression d'un candidat par Id  */	
+	@RequestMapping(value = "/delete/{noCandidat}",method = { RequestMethod.DELETE })
+	@ResponseBody
+	  public void delete(@PathVariable("noCandidat") String noCandidat) {
+	       candidatRepository.deleteCandidatByNo(noCandidat);
 	}
 	
+	/*4- Suppression de tous les candidats  */	
+	@RequestMapping(value = "/cand",method = { RequestMethod.DELETE })
+	@ResponseBody
+	  public void deleteCandidats() {
+	       candidatRepository.deleteAll();
+	}
+	
+	
 	/* 5- Recherche par université d'origine */ 
-	@RequestMapping("/universite/{universiteOrigine}")
+	@RequestMapping(value ="/universite/{universiteOrigine}",method = { RequestMethod.GET})
 	@ResponseBody
 	public List<Candidat> getUniversiteOrigine(@PathVariable("universiteOrigine") String universiteOrigine) {
 		return candidatRepository.findByUniversiteOrigine(universiteOrigine);
 
 	}
+	
+	
+	
 	/* 6- Recherche par nom de candidat */ 
-	@RequestMapping("/nom/{nom}")
+	@RequestMapping(value= "/nom/{nom}", method = { RequestMethod.GET})
 	@ResponseBody
 	public Candidat getNom(@PathVariable("nom") String nom) {
 		return candidatRepository.findByNom(nom);

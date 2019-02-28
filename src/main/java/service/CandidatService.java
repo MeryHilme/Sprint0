@@ -38,13 +38,19 @@ public class CandidatService {
 		    return null;
 		}
 
-	
+	/*
 	public void deleteById(String noCandidat) {
 		 candidatRepository.deleteById(noCandidat);
 		}
+	*/
 	
-
-		
+	public void deleteCandidatByNo(String noCandidat){
+		 candidatRepository.deleteCandidatByNo(noCandidat);
+		}
+	
+	public void deleteAll(){
+		 candidatRepository.deleteAll();
+		}
 
 	public Candidat getUniversiteOrigine(String universiteOrigine) {
 		List<Candidat> cd = candidatRepository.findAll();
@@ -63,7 +69,5 @@ public class CandidatService {
 		
 		return null;
 	}
-
-
 
 }
