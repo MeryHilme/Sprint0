@@ -38,11 +38,6 @@ public class FormationService {
 		    return null;
 		}
 
-	/*
-	public void deleteById(String noFormation) {
-		 formationRepository.deleteById(noFormation);
-		}
-	*/
 	
 	public void deleteByCodeFormation(String codeFormation){
 		 formationRepository.deleteById(codeFormation);
