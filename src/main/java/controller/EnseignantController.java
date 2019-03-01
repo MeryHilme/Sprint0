@@ -28,13 +28,13 @@ public class EnseignantController {
 	@Autowired
 	EnseignantRepository enseignantRepository;
 
-	/* 1- Lister tous les enseignants */
+	/* 1- Listing all teachers */
 	@RequestMapping(value = "/all", method = { RequestMethod.GET })
 	public List<Enseignant> getAll() {
 		return Ens.getAll();
 	}
 
-	/* 2- Recherche par ID Enseignant */
+	/* 2- Search by ID Enseignant */
 	@RequestMapping("/{noEnseignant}")
 	@ResponseBody
 	public Enseignant getEnseignant(@PathVariable("noEnseignant") Long noEnseignant) {
@@ -42,27 +42,27 @@ public class EnseignantController {
 	}
 	
 	
-	/* 3- Create un nouveau Enseignant */
+	/* 3- Create a new teacher */
 	@RequestMapping(value = "/create", method = { RequestMethod.POST })
 	public void save(@RequestBody Enseignant e) {
 		Ens.save(e);
 	}
 	
-	/* 4- Suppression d'un Enseignant par Id */
+	/* 4- Delete a teacher by Id */
 	@RequestMapping(value = "/delete/{noEnseignant}", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void delete(@PathVariable("noEnseignant") Long noEnseignant) {
 		enseignantRepository.deleteEnseignantByNo(noEnseignant);
 	}
 	
-	/* 4- Suppression de tous les Enseignants */
+	/* 4- Delete all Enseignants */
 	@RequestMapping(value = "/ens", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void deleteEnseignant() {
 		enseignantRepository.deleteAll();
 	}
 	
-	/* 5- Recherche par EmailUbo */
+	/* 5- Search by EmailUbo */
 	@RequestMapping(value = "/emailUbo/{emailUbo}", method = { RequestMethod.GET })
 	@ResponseBody
 	public List<Enseignant> getEmailUbo(@PathVariable("emailUbo") String emailUbo) {
@@ -70,7 +70,7 @@ public class EnseignantController {
 
 	}
 	
-	/* 6- Recherche par nom de l'Enseignant */
+	/* 6- Search by teacher's name */
 	@RequestMapping(value = "/nom/{nom}", method = { RequestMethod.GET })
 	@ResponseBody
 	public Enseignant getNom(@PathVariable("nom") String nom) {

@@ -8,6 +8,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+/**
+ * 
+ * 
+ * @author Meryem
+ *
+ */
+
 
 @EntityScan("com")
 @EnableJpaRepositories(basePackages="service")
@@ -19,6 +26,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class SprintV01Application {
 
 	public static void main(String[] args) {
+		//Starting the whole SPRING Application: SprintV01Application
 		SpringApplication.run(SprintV01Application.class, args);
 	}
 

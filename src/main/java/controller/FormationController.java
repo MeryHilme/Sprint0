@@ -27,26 +27,26 @@ public class FormationController {
 	@Autowired
 	FormationRepository formationRepository;
 
-	/* 1- Lister tous les candidats */
+	/* 1- Listing all Formations */
 	@RequestMapping(value = "/all", method = { RequestMethod.GET })
 	public List<Formation> getAll() {
 		return Frm.getAll();
 	}
 	
-	/* 2- Recherche par ID candidat */
+	/* 2- Searching by codeFormation */
 	@RequestMapping("/{codeFormation}")
 	@ResponseBody
 	public Formation getFormation(@PathVariable("codeFormation") String codeFormation) {
 		return Frm.getFormation(codeFormation);
 	}
 	
-	/* 3- Create un nouveau candidat */
+	/* 3- Create a new Formation */
 	@RequestMapping(value = "/create", method = { RequestMethod.POST })
 	public void save(@RequestBody Formation f) {
 		Frm.save(f);
 	}
 	
-	/* 4- Suppression d'un candidat par Id */
+	/* 4- Deleting by code formation */
 	@RequestMapping(value = "/formation/{codeFormation}", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void delete(@PathVariable("codeFormation") String codeFormation) {
@@ -54,14 +54,14 @@ public class FormationController {
 	}
 	
 	
-	/* 4- Suppression de toutes les formations */
+	/* 4- deleting all formations */
 	@RequestMapping(value = "/frm", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void deleteFormations() {
 		formationRepository.deleteAll();
 	}
 	
-	/* 5- Recherche par Nom de la formation */
+	/* 5- Searching formation by name */
 	@RequestMapping(value = "/nom/{nomFormation}", method = { RequestMethod.GET })
 	@ResponseBody
 	public List<Formation> getNomFormation(@PathVariable("nomFormation") String nomFormation) {
@@ -69,6 +69,7 @@ public class FormationController {
 
 	}
 	
+	/*6- Updating a Formation using PUT Method */
 	@RequestMapping(method=RequestMethod.PUT, value="/update/{codeFormation}")
 	  public Formation update(@PathVariable String codeFormation, @RequestBody Formation formation) {
 		Formation update = formationRepository.findByCodeFormation(codeFormation);

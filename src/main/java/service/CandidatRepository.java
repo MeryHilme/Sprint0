@@ -12,12 +12,16 @@ import com.Candidat;
     
 @Repository
 @Transactional(readOnly = true)
+
+// This interface extends from JPARepository which is our DAO (Accessing to data)
 public interface CandidatRepository extends JpaRepository<Candidat, String>{
 
+	//This body contains the signature of the methods used in the ClassService CandidatService!
+	
 	public List<Candidat> findByUniversiteOrigine(String universiteOrigine);
 	public Candidat findByNom(String nom);
-//	public void deleteById(String noCandidat);
-	
+
+	//Deleting using a @Transactional because it is critical to delete in a database!
 	@Modifying
     @Transactional
     @Query("delete from Candidat c where c.noCandidat = ?1")

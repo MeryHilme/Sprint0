@@ -26,21 +26,21 @@ public class PromotionController {
 	@Autowired
 	PromotionRepository promotionRepository;
 
-	/* 1- Lister toutes les promotions */
+	/* 1- Lister all promotions */
 	@RequestMapping(value = "/AllPromos", method = { RequestMethod.GET })
 	public List<Promotion> getAll() {
 		return Pro.getAll();
 	}
 	
 
-	/* 2- Recherche par Sigle de Promotion */
+	/* 2- Searching by Sigle de Promotion */
 	@RequestMapping("/sigle/{siglePromotion}")
 	@ResponseBody
 	public Promotion getPromotion(@PathVariable("siglePromotion") String siglePromotion) {
 		return Pro.getPromotion(siglePromotion);
 	}
 	
-	/* 3- Recherche par annee_universitaire et code_formation */
+	/* 3- Searching by annee_universitaire et code_formation */
 	@RequestMapping(value = "/{codeFormation}/{anneeUniversitaire}", method = { RequestMethod.GET })
 	@ResponseBody
 	public Promotion findByCodeFormationAndAnneeUniveristaire(@PathVariable("codeFormation") String codeFormation, @PathVariable("anneeUniversitaire") String anneeUniversitaire) {
@@ -48,14 +48,14 @@ public class PromotionController {
 
 	}
 	
-	/*4- Suppression de toutes les promotions */ 
+	/*4- Deleting all promotions */ 
 	@RequestMapping(value = "/pro", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void deletePromotions() {
 		promotionRepository.deleteAll();
 	}
 	
-	/*5- Suppression par AnneeUnversitaire et codeFormation */
+	/*5- Deleting by AnneeUnversitaire et codeFormation */
 	@RequestMapping(value = "/{codeFormation}/{anneeUniversitaire}", method = { RequestMethod.DELETE })
 	@ResponseBody
 	public void delete(@PathVariable("codeFormation") String codeFormation,@PathVariable("anneeUniversitaire") String anneeUniversitaire) {

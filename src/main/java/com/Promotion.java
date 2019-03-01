@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @NamedQuery(name = "Promotion.findByLieuRentree", query = "SELECT p FROM Promotion p WHERE p.lieuRentree = ?1")
 })
 public class Promotion {
+	//@EmbeddedId indicates that This class (that contains the composite key)
+	//will now be embedded as a field which I called : MyKey 
 	@EmbeddedId
 	private PromotionPrimaryKey MyKey;
 	@Column(name = "ANNEE_UNIVERSITAIRE", insertable = false, updatable = false)
@@ -78,6 +80,7 @@ public class Promotion {
 		return formation;
 	}
 
+	// Getters and setters
 	public void setFormation(Formation formation) {
 		this.formation = formation;
 	}
@@ -162,6 +165,7 @@ public class Promotion {
 		this.noEnseignant = noEnseignant;
 	}
 
+	// Redefinition of toString() method
 	@Override
 	public String toString() {
 		return "Promotion [MyKey=" + MyKey + ", anneeUniversitaire=" + anneeUniversitaire + ", siglePromotion="
@@ -173,3 +177,6 @@ public class Promotion {
 
 
 }
+/**
+ * ############################ END_PROMOTION ############################
+ */

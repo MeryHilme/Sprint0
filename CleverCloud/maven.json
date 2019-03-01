@@ -1,0 +1,9 @@
+{
+  "build": {
+    "type": "maven",
+    "goal": "install  -DskipTests"
+  },
+  "deploy": {
+    "jarName": "target/artifactId-version.jar"
+  }
+}

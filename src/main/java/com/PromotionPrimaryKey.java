@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+//@Embeddable is used to indicate that the table will not exist alone, it will be mapped using this class of composite key
 @Embeddable
 public class PromotionPrimaryKey implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,15 +16,17 @@ public class PromotionPrimaryKey implements Serializable {
 	@Column(name = "CODE_FORMATION")
 	private String codeFormation;
 
-	public PromotionPrimaryKey() {
-	}
+	//Constructor by default 
+	public PromotionPrimaryKey() {}
 
+	//Constructor using the composite key
 	public PromotionPrimaryKey(String anneeUniversitaire, String codeFormation) {
 		super();
 		this.anneeUniversitaire = anneeUniversitaire;
 		this.codeFormation = codeFormation;
 	}
 
+	// Getters and setters
 	public String getAnneeUniversitaire() {
 		return this.anneeUniversitaire;
 	}
@@ -40,6 +43,7 @@ public class PromotionPrimaryKey implements Serializable {
 		this.codeFormation = codeFormation;
 	}
 
+	// Redefinition of toString() method
 	@Override
 	public String toString() {
 		return "/promotions/CodeFormationAndAnneeUniveristaire?codeformation="+codeFormation+
@@ -47,3 +51,6 @@ public class PromotionPrimaryKey implements Serializable {
 	}
 
 }
+/**
+ * ############################ END_PROMOTION_PRIMARY_KEY ############################
+ */
