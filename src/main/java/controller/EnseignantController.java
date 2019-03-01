@@ -35,7 +35,7 @@ public class EnseignantController {
 	}
 
 	/* 2- Search by ID Enseignant */
-	@RequestMapping("/{noEnseignant}")
+	@RequestMapping(value="/{noEnseignant}",method=RequestMethod.GET)
 	@ResponseBody
 	public Enseignant getEnseignant(@PathVariable("noEnseignant") Long noEnseignant) {
 		return Ens.getEnseignant(noEnseignant);

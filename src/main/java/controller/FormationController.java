@@ -34,7 +34,7 @@ public class FormationController {
 	}
 	
 	/* 2- Searching by codeFormation */
-	@RequestMapping("/{codeFormation}")
+	@RequestMapping(value="/{codeFormation}",method=RequestMethod.GET)
 	@ResponseBody
 	public Formation getFormation(@PathVariable("codeFormation") String codeFormation) {
 		return Frm.getFormation(codeFormation);

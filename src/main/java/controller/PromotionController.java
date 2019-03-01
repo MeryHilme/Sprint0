@@ -34,7 +34,7 @@ public class PromotionController {
 	
 
 	/* 2- Searching by Sigle de Promotion */
-	@RequestMapping("/sigle/{siglePromotion}")
+	@RequestMapping(value="/sigle/{siglePromotion}",method=RequestMethod.GET)
 	@ResponseBody
 	public Promotion getPromotion(@PathVariable("siglePromotion") String siglePromotion) {
 		return Pro.getPromotion(siglePromotion);

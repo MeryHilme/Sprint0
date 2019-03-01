@@ -47,7 +47,7 @@ public class CandidatController {
 	}
 
 	/* 2- Search by NoCandidat */
-	@RequestMapping("/{noCandidat}")
+	@RequestMapping(value="/{noCandidat}",method=RequestMethod.GET)
 
 	// @RespondeBody is for mapping the HTTP requests
 	@ResponseBody
@@ -62,6 +62,7 @@ public class CandidatController {
 	@RequestMapping(value = "/create", method = { RequestMethod.POST })
 	public void save(@RequestBody Candidat c) {
 		Can.save(c);
+		System.out.println("Candidat bien ajouté!");
 	}
 
 	/* 4- Delete a candidat by noCandidat */

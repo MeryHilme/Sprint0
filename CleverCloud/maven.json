@@ -4,6 +4,6 @@
     "goal": "install  -DskipTests"
   },
   "deploy": {
-    "jarName": "target/artifactId-version.jar"
+    "jarName": "target/dosispi.test-0.0.1-SNAPSHOT.jar"
   }
 }
