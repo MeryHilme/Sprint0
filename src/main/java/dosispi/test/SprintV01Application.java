@@ -24,7 +24,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @ComponentScan({"service","controller"})
 @SpringBootApplication
-
 public class SprintV01Application {
 
 	public static void main(String[] args) {
